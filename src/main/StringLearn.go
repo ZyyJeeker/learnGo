@@ -41,7 +41,7 @@ func testPrintf() {
 	println(isDigit, isLower, isUpper)
 }
 
-func appendTest() {
+func appendStrTest() {
 	s := "hel" + "lo,"
 	s += "world!"
 	fmt.Println(s) //输出 “hello, world!”

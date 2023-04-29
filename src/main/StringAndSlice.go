@@ -3,6 +3,9 @@ package main
 import (
 	"encoding/binary"
 	"fmt"
+	"io/ioutil"
+	"regexp"
+	"sort"
 	"unicode/utf8"
 )
 
@@ -78,4 +81,84 @@ func compare(a, b []byte) int {
 
 	}
 	return 0
+}
+
+func sortTest() {
+	sl1 := []int{23, 4, 5, 67, 12, 45}
+	fmt.Println(sl1)
+	sortIts(sl1)
+	fmt.Println(sl1)
+	println(sort.IntsAreSorted(sl1))
+	println(sort.SearchInts(sl1, 5))
+	fl1 := []float64{1.2, 0.3, 56.3, 12.4}
+	fmt.Println(fl1)
+	sortFloat(fl1)
+	fmt.Println(fl1)
+}
+
+func sortIts(a []int) {
+	sort.Ints(a)
+}
+
+func sortFloat(a []float64) {
+	sort.Float64s(a)
+}
+
+func appendSlice() {
+	a := []int{12, 34, 5}
+	b := []int{6, 8, 45}
+	res := append(a, b...)
+	sort.Ints(res)
+	fmt.Println(res)
+	sl := append(res[:3], res[4:]...)
+	fmt.Println(sl)
+}
+
+func copySlice() {
+	a := []int{6, 8, 45}
+	b := make([]int, 5)
+	copy(b, a)
+	fmt.Println(b)
+}
+
+func deleteSlice() {
+	a := []int{12, 76, 34, 5, 25}
+	res := append(a[:2], a[3:]...)
+	fmt.Println(res)
+}
+
+func sliceExpand() {
+	a := []int{12, 76, 34}
+	res := append(a, make([]int, 3)...)
+	fmt.Println(res)
+}
+
+func sliceInsert() {
+	a := []int{12, 76, 34}
+	res := append(a[:1], append([]int{2}, a[1:]...)...)
+	fmt.Println(res)
+	las := append(res[:1], append([]int{3, 4}, res[1:]...)...)
+	fmt.Println(las)
+
+	b := []int{6, 8, 45}
+	las1 := append(las[:1], append(b, las[1:]...)...)
+	fmt.Println(las1)
+
+	fmt.Println(b[len(b)-1])
+	fmt.Println(b[:len(b)-1])
+}
+
+var digitRegexp = regexp.MustCompile("[0-9]+")
+
+func FindDigits(filename string) []byte {
+	fileBytes, _ := ioutil.ReadFile(filename)
+	b := digitRegexp.FindAll(fileBytes, len(fileBytes))
+	c := make([]byte, 0)
+	for _, bytes := range b {
+		c = append(c, bytes...)
+	}
+	for _, el := range c {
+		fmt.Printf("%c,", el)
+	}
+	return c
 }
