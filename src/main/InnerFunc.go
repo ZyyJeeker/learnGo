@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"runtime"
 	"strings"
+	"time"
 )
 
 func funcAsArgs() {
@@ -97,4 +100,25 @@ func addSuffix(suffix string) func(string) string {
 
 func DefaultSuffixAdd(s string) string {
 	return s
+}
+
+func where() {
+	_, file, line, _ := runtime.Caller(1)
+	log.Printf("%s:%d", file, line)
+}
+
+func calculateTime(f func()) {
+	start := time.Now()
+	f()
+	end := time.Now()
+	fmt.Printf("longCalculation took this amount of time: %s\n", end.Sub(start))
+}
+
+func calculateTimeTest() {
+	calculateTime(func() {
+		sum := 0
+		for i := 0; i < 1e6; i++ {
+			sum += i
+		}
+	})
 }

@@ -50,5 +50,12 @@ func main() {
 	//FindDigits("resource/number.txt")
 	//funcAsArgs()
 	//AdderTest()
-	suffixTest()
+	//where()
+	//suffixTest()
+	//where()
+	//calculateTimeTest()
+	//mapTest()
+	//sliceMap()
+	sortMap()
+	invert()
 }
