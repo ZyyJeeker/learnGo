@@ -1,20 +1,20 @@
-package main
+package base
 
 import "fmt"
 
 func testNewStudent() {
 	tom := Student{"Tom", 12}
 	jack := new(Student)
-	jack.age = 14
-	jack.name = "Jack"
+	jack.Age = 14
+	jack.Name = "Jack"
 	println(jack)
 	fmt.Println(tom)
 	fmt.Println(jack)
 	fmt.Println(*jack)
 
-	println(jack.name)
-	println((*jack).name)
-	println(tom.name)
+	println(jack.Name)
+	println((*jack).Name)
+	println(tom.Name)
 
 	fmt.Println(getStudent("Coco", 34))
 	fmt.Println(getStudent0("Coco", 34))
@@ -24,15 +24,15 @@ func testNewStudent() {
 
 func getStudent(name string, age int) Student {
 	res := new(Student)
-	res.age = age
-	res.name = name
+	res.Age = age
+	res.Name = name
 	return *res
 }
 
 func getStudent0(name string, age int) *Student {
 	res := new(Student)
-	res.age = age
-	res.name = name
+	res.Age = age
+	res.Name = name
 	return res
 }
 

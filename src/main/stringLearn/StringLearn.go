@@ -1,4 +1,4 @@
-package main
+package stringLearn
 
 import (
 	"fmt"
@@ -48,8 +48,8 @@ func appendStrTest() {
 }
 
 func stringsLearn() {
-	str := "This is an example of a string"
-	fmt.Printf("T/F Does the string \"%s\" have prefix %s?\n", str, "Th")
+	str := "This is an example of a stringLearn"
+	fmt.Printf("T/F Does the stringLearn \"%s\" have prefix %s?\n", str, "Th")
 	println(strings.HasPrefix(str, "Th"))
 	println(strings.HasSuffix(str, "ing"))
 	println(strings.Contains(str, "example"))
@@ -80,5 +80,5 @@ func stringsLearn() {
 	fmt.Printf("The integer is: %d\n", an)
 	an = an + 5
 	newS = strconv.Itoa(an)
-	fmt.Printf("The new string is: %s\n", newS)
+	fmt.Printf("The new stringLearn is: %s\n", newS)
 }

@@ -1,9 +1,10 @@
-package main
+package stringLearn
 
 import (
 	"encoding/binary"
 	"fmt"
 	"io/ioutil"
+	"learnGo/base"
 	"regexp"
 	"sort"
 	"unicode/utf8"
@@ -27,7 +28,7 @@ func stringSlice() {
 
 func format() {
 	println()
-	student := Student{"张是", 23}
+	student := base.Student{"张是", 23}
 	fmt.Printf("张三是:%#v,他的类型为%T\n", student, student)
 	fmt.Printf("张三是:%v,他的类型为%T\n", student, student)
 }
@@ -133,7 +134,7 @@ func sliceExpand() {
 	fmt.Println(res)
 }
 
-func sliceInsert() {
+func SliceInsert() {
 	a := []int{12, 76, 34}
 	res := append(a[:1], append([]int{2}, a[1:]...)...)
 	fmt.Println(res)

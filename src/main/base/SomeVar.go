@@ -1,4 +1,4 @@
-package main
+package base
 
 import "fmt"
 
@@ -7,8 +7,8 @@ func baseType() {
 	var b = a
 
 	h := new(Student)
-	h.name = "张三"
-	h.age = 12
+	h.Name = "张三"
+	h.Age = 12
 	var l = h
 	fmt.Println(h)
 
@@ -47,6 +47,6 @@ const (
 )
 
 type Student struct {
-	name string
-	age  int
+	Name string
+	Age  int
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"learnGo/base"
 	_ "learnGo/hello"
 )
 
@@ -56,6 +57,9 @@ func main() {
 	//calculateTimeTest()
 	//mapTest()
 	//sliceMap()
-	sortMap()
-	invert()
+	//sortMap()
+	//invert()
+	//stringLearn.RegexTest()
+	//stringLearn.SliceInsert()
+	base.BigIntTest()
 }

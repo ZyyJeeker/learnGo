@@ -1,10 +1,11 @@
-package main
+package function
 
 import (
 	"fmt"
+	"learnGo/base"
 )
 
-func foo(x *Student) {
+func foo(x *base.Student) {
 	println()
 	println(x.name)
 	println(x.age)
@@ -12,9 +13,9 @@ func foo(x *Student) {
 }
 
 func callFoo() {
-	student := Student{"tom", 12}
+	student := base.Student{"tom", 12}
 	foo(&student)
-	s := new(Student)
+	s := new(base.Student)
 	s.name = "jack"
 	s.age = 22
 	println(s)
