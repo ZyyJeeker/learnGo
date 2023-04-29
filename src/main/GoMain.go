@@ -1,8 +1,8 @@
 package main
 
 import (
-	"learnGo/base"
 	_ "learnGo/hello"
+	"learnGo/structTest"
 )
 
 func main() {
@@ -61,5 +61,7 @@ func main() {
 	//invert()
 	//stringLearn.RegexTest()
 	//stringLearn.SliceInsert()
-	base.BigIntTest()
+	//base.BigIntTest()
+	structTest.PhoneTest()
+	structTest.StructTransfer()
 }
