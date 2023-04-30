@@ -62,6 +62,7 @@ func main() {
 	//stringLearn.RegexTest()
 	//stringLearn.SliceInsert()
 	//base.BigIntTest()
-	structTest.PhoneTest()
-	structTest.StructTransfer()
+	//structTest.PhoneTest()
+	//structTest.StructTransfer()
+	structTest.MethodTest()
 }
