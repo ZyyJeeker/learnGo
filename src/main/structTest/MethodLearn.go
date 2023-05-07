@@ -170,11 +170,11 @@ func (p *NamedPoint) Abs() float64 {
 }
 
 type Camera struct {
-	name string
+	Name string
 }
 
 func (camera *Camera) String() string {
-	return "Camera name is " + camera.name
+	return "Camera Name is " + camera.Name
 }
 
 func (camera *Camera) TakeAPicture() string {
@@ -186,7 +186,7 @@ type MobilePhone struct {
 }
 
 func (m *MobilePhone) String() string {
-	return "MobilePhone name is " + m.name
+	return "MobilePhone Name is " + m.name
 }
 
 func (m *MobilePhone) Call() string {

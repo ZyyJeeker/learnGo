@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "learnGo/hello" // 前面加下划线_，表示导入时直接调用go文件的init方法，但是go文件内其他所有类型和函数都不可见
-	. "learnGo/structTest"
+	. "learnGo/reflect"
 )
 
 func main() {
@@ -68,5 +68,6 @@ func main() {
 	//InterfaceTest()
 	//SortTest()
 	//SliceTest()
-	AnyInterfaceTest()
+	//AnyInterfaceTest()
+	ReflectTest()
 }

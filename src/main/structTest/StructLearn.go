@@ -70,33 +70,33 @@ type Squ struct {
 }
 
 type Person struct {
-	firstName string
-	lastName  string
+	FirstName string
+	LastName  string
 }
 
 func PersonTest() {
 	// 1-struct as a value type:
 	var pers1 Person
-	pers1.firstName = "Chris"
-	pers1.lastName = "Woodward"
+	pers1.FirstName = "Chris"
+	pers1.LastName = "Woodward"
 	upPerson(&pers1)
-	fmt.Printf("The name of the person is %s %s\n", pers1.firstName, pers1.lastName)
+	fmt.Printf("The Name of the person is %s %s\n", pers1.FirstName, pers1.LastName)
 	// 2—struct as a pointer:
 	pers2 := new(Person)
-	pers2.firstName = "Chris"
-	pers2.lastName = "Woodward"
-	(*pers2).lastName = "Woodward" // 这是合法的
+	pers2.FirstName = "Chris"
+	pers2.LastName = "Woodward"
+	(*pers2).LastName = "Woodward" // 这是合法的
 	upPerson(pers2)
-	fmt.Printf("The name of the person is %s %s\n", pers2.firstName, pers2.lastName)
+	fmt.Printf("The Name of the person is %s %s\n", pers2.FirstName, pers2.LastName)
 	// 3—struct as a literal:
 	pers3 := &Person{"Chris", "Woodward"}
 	upPerson(pers3)
-	fmt.Printf("The name of the person is %s %s\n", pers3.firstName, pers3.lastName)
+	fmt.Printf("The Name of the person is %s %s\n", pers3.FirstName, pers3.LastName)
 }
 
 func upPerson(p *Person) {
-	p.firstName = strings.ToUpper(p.firstName)
-	p.lastName = strings.ToUpper(p.lastName)
+	p.FirstName = strings.ToUpper(p.FirstName)
+	p.LastName = strings.ToUpper(p.LastName)
 }
 
 type number struct {

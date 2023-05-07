@@ -48,8 +48,8 @@ func AnyInterfaceTest() {
 	list.Set(0, Data{[]Node{{1, 2}}})
 
 	list.Set(1, Person{
-		firstName: "张",
-		lastName:  "宇",
+		FirstName: "张",
+		LastName:  "宇",
 	})
 
 	list.Set(2, Phone{
