@@ -65,5 +65,8 @@ func main() {
 	//PhoneTest()
 	//StructTransfer()
 	//MethodTest()
-	InterfaceTest()
+	//InterfaceTest()
+	//SortTest()
+	//SliceTest()
+	AnyInterfaceTest()
 }
