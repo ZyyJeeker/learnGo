@@ -107,6 +107,11 @@ func InterfaceTest() {
 	}
 
 	interfaceSetTest()
+
+	r1 := Rectangle{5, 3} // Area() of Rectangle needs a value
+	q1 := &Square{5}      // Area() of Square needs a pointer
+
+	shapers = []Shaper{&r1, q1}
 }
 
 type Shaper interface {
@@ -117,7 +122,7 @@ type Square struct {
 	side float32
 }
 
-func (sq *Square) Area() float32 {
+func (sq Square) Area() float32 {
 	return sq.side * sq.side
 }
 
