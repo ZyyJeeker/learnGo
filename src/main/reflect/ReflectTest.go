@@ -117,6 +117,40 @@ func ReflectTest() {
 	// 方法的receive是值的话，不管对象是值还是指针，传递的都是值的复制
 
 	// 方法的receive是指针的话，不管对象是值还是指针，传递的都是对象指针的复制
+
+	motorcars := Motorcars{
+		&Motorcar{Manufacturer: "BMW", BuildYear: 1988},
+		&Motorcar{Manufacturer: "Audi", BuildYear: 1952},
+		&Motorcar{Manufacturer: "BYD", BuildYear: 2011},
+	}
+
+	res := motorcars.Filter(func(t *Motorcar) bool {
+		return t.BuildYear > 1980
+	}).Process(func(t *Motorcar) {
+		t.Model = "自动挡"
+	}).Map(func(t *Motorcar) any {
+		return t.Manufacturer
+	})
+
+	fmt.Println(res)
+	fmt.Println(motorcars)
+
+	foo, resMap := MakeSortedAppender([]string{"BMW", "Audi"})
+	motorcars.Process(foo)
+	fmt.Println(resMap)
+
+	motors := []Motorcar{{"Q6", "Audi", 2002}}   // 切片元素是值的话，不实现String也可以打印出值
+	motorPs := []*Motorcar{{"Q6", "Audi", 2002}} // 切片元素是指针的话，必须实现String才可以打印出值,不然只会打印指针
+	fmt.Println(motors)
+	fmt.Println(motorPs)
+
+	mo := Motorcar{
+		Model:        "A6",
+		Manufacturer: "Audi",
+		BuildYear:    2006,
+	}
+	fmt.Printf("\n这就是:%+v\n", &mo) // 打印属性结构格式
+	fmt.Println(&mo)               // 不实现String的话,打印地址格式,实现String则按照String格式打印
 }
 
 type Stringer interface {
@@ -187,4 +221,65 @@ func TestInterfaceParam(quack Quack, walk Walk) {
 		bird.Name = "喜鹊" // 传递指针 修改的是传参来的指针解指针后的值
 		fmt.Println(bird.Name)
 	}
+}
+
+type Motorcar struct {
+	Model        string
+	Manufacturer string
+	BuildYear    int
+}
+
+func (m *Motorcar) String() string {
+	return "{ " + m.Model + " " + m.Manufacturer + " " + strconv.Itoa(m.BuildYear) + " }"
+}
+
+type Motorcars []*Motorcar
+
+func (ts Motorcars) Process(f func(t *Motorcar)) Motorcars {
+	for _, t := range ts {
+		f(t)
+	}
+	return ts
+}
+
+func (ts Motorcars) Filter(f func(t *Motorcar) bool) Motorcars {
+	res := make(Motorcars, 0)
+
+	for _, t := range ts {
+		if f(t) {
+			res = append(res, t)
+		}
+	}
+
+	return res
+}
+
+func (ts Motorcars) Map(f func(t *Motorcar) any) []any {
+	res := make([]any, len(ts))
+	idx := 0
+	ts.Process(func(tp *Motorcar) {
+		res[idx] = f(tp)
+		idx++
+	})
+	return res
+}
+
+func MakeSortedAppender(manufacturers []string) (func(c *Motorcar), map[string]Motorcars) {
+	resMap := make(map[string]Motorcars)
+	for _, manufacturer := range manufacturers {
+		resMap[manufacturer] = make(Motorcars, 0)
+	}
+
+	resMap["default"] = make(Motorcars, 0)
+
+	foo := func(c *Motorcar) {
+
+		if _, ok := resMap[c.Manufacturer]; ok {
+			resMap[c.Manufacturer] = append(resMap[c.Manufacturer], c)
+		} else {
+			resMap["default"] = append(resMap["default"], c)
+		}
+	}
+
+	return foo, resMap
 }
