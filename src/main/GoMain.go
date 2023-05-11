@@ -70,5 +70,7 @@ func main() {
 	//SliceTest()
 	//AnyInterfaceTest()
 	//ReflectTest()
-	IOTest()
+	//IOTest()
+	//AllIOTest()
+	Echo()
 }
