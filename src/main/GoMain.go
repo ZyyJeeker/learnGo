@@ -72,5 +72,6 @@ func main() {
 	//ReflectTest()
 	//IOTest()
 	//AllIOTest()
-	Echo()
+	//Echo()
+	Cat()
 }
